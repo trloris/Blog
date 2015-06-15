@@ -18,7 +18,6 @@ defmodule Blog.Router do
     get "/", PostController, :index
 
     resources "/posts", PostController, only: [:index, :show]
-    resources "/users", UserController
   end
 
   scope "/admin", Blog.Admin, as: :admin do
