@@ -6,6 +6,7 @@
       <th>Title</th>
       <th>Body</th>
       <th>Category</th>
+      <th>Date</th>
 
       <th></th>
     </tr>
@@ -16,6 +17,7 @@
       <td><%= post.title %></td>
       <td><%= post.body %></td>
       <td><%= post.category %></td>
+      <td><%= post.inserted_at %></td>
 
       <td class="text-right">
         <%= link "Show", to: post_path(@conn, :show, post), class: "btn btn-default btn-xs" %>
