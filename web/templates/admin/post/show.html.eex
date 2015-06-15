@@ -19,4 +19,4 @@
 
 </ul>
 
-<%= link "Back", to: post_path(@conn, :index) %>
+<%= link "Back", to: admin_post_path(@conn, :index) %>
