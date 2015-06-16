@@ -3,8 +3,17 @@ defmodule Blog.Admin.PostController do
 
   alias Blog.Post
 
+  plug :authenticate
   plug :scrub_params, "post" when action in [:create, :update]
   plug :action
+
+  def authenticate(conn, _) do
+    if get_session(conn, :user_id) do
+      conn
+    else
+      conn |> redirect to: admin_log_in_path(conn, :login)
+    end
+  end
 
   def index(conn, _params) do
     posts = Repo.all(Post)

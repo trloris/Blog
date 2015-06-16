@@ -6,6 +6,9 @@ defmodule Blog.Admin.LogInController do
   plug :action
 
   def login(conn, _params) do
+    if get_session(conn, :user_id) do
+      redirect conn, to: admin_post_path(conn, :index)
+    end
     render conn
   end
 
