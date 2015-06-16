@@ -15,9 +15,10 @@ defmodule Blog.Router do
   scope "/", Blog do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PostController, :index
+    get "/", PostController, :home
 
-    resources "/posts", PostController, only: [:index, :show]
+    get "/posts/page/:page", PostController, :index
+    get "/posts/:id", PostController, :show
   end
 
   scope "/admin", Blog.Admin, as: :admin do
