@@ -24,9 +24,4 @@ defmodule Blog.Router do
 
     resources "/posts", PostController
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", Blog do
-  #   pipe_through :api
-  # end
 end
