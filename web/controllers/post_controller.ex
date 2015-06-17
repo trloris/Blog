@@ -6,7 +6,7 @@ defmodule Blog.PostController do
   plug :action
 
   def home(conn, _param) do
-    query = from p in Post, limit: 10, offset: 0
+    query = from p in Post, limit: 10, offset: 0, order_by: [desc: p.inserted_at]
     posts = Repo.all query
 
     count =
@@ -20,7 +20,7 @@ defmodule Blog.PostController do
   def index(conn, %{"page" => page}) do
     page = String.to_integer(page)
     offset = (page - 1) * 10
-    query = from p in Post, limit: 10, offset: ^offset
+    query = from p in Post, limit: 10, offset: ^offset, order_by: [desc: p.inserted_at]
     posts = Repo.all query
 
     count =
