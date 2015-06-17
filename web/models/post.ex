@@ -5,12 +5,13 @@ defmodule Blog.Post do
     field :title, :string
     field :body, :string
     field :category, :string
+    field :formatted_body, :string
 
     timestamps
   end
 
   @required_fields ~w(title body category)
-  @optional_fields ~w()
+  @optional_fields ~w(formatted_body)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
