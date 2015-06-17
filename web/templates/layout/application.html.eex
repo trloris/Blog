@@ -9,6 +9,7 @@
 
     <title>Loris Blog</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/blog.css") %>">
   </head>
 
   <body>

@@ -1,28 +1,19 @@
 <h2>Listing posts</h2>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th>Category</th>
-      <th>Date</th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
 <%= for post <- @posts do %>
-    <tr>
-      <td><%= post.title %></td>
-      <td><%= post.body %></td>
-      <td><%= post.category %></td>
-      <td><%= DateFormatter.format_date(post.inserted_at) %></td>
-
-      <td class="text-right">
-        <%= link "Show", to: post_path(@conn, :show, post), class: "btn btn-default btn-xs" %>
-      </td>
-    </tr>
+<h1 class="blog-title"><%= link post.title, to: post_path(@conn, :show, post) %></h1>
+<p class="blog-date"><%= DateFormatter.format_date(post.inserted_at) %></p>
 <% end %>
-  </tbody>
-</table>
+<nav>
+<ul class="pager">
+<%= if @previous do %>
+  <li>
+    <%= link "Previous", to: post_path(@conn, :index, @previous) %>
+  </li>
+<% end %>
+<%= if @next do %>
+  <li>
+    <%= link "Next", to: post_path(@conn, :index, @next) %>
+  </li>
+<% end %>
+</ul>
