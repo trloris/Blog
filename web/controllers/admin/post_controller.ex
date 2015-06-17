@@ -26,6 +26,8 @@ defmodule Blog.Admin.PostController do
   end
 
   def create(conn, %{"post" => post_params}) do
+    post_params = post_params |> Map.put("formatted_body",
+                                         Earmark.to_html(post_params["body"]))
     changeset = Post.changeset(%Post{}, post_params)
 
     if changeset.valid? do
@@ -52,6 +54,8 @@ defmodule Blog.Admin.PostController do
 
   def update(conn, %{"id" => id, "post" => post_params}) do
     post = Repo.get(Post, id)
+    post_params = post_params |> Map.put("formatted_body",
+                                         Earmark.to_html(post_params["body"]))
     changeset = Post.changeset(post, post_params)
 
     if changeset.valid? do

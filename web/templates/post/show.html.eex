@@ -1,2 +1,2 @@
 <h1><%= @post.title %></h1>
-<div><%= @post.body %></div>
+<div><%= safe @post.formatted_body %></div>
