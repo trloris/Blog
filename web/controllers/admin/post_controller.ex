@@ -16,7 +16,9 @@ defmodule Blog.Admin.PostController do
   end
 
   def index(conn, _params) do
-    posts = Repo.all(Post)
+    posts =
+      from(p in Post, order_by: [desc: :inserted_at])
+      |> Repo.all
     render(conn, "index.html", posts: posts)
   end
 
