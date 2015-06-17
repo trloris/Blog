@@ -1,8 +1,6 @@
 defmodule Blog.Admin.LogInController do
   use Blog.Web, :controller
 
-  alias Blog.User
-
   plug :action
 
   def login(conn, _params) do
