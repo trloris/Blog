@@ -8,7 +8,13 @@ defmodule Blog.PostController do
   def home(conn, _param) do
     query = from p in Post, limit: 10, offset: 0
     posts = Repo.all query
-    render(conn, "index.html", posts: posts, page: 1)
+
+    count =
+      (from p in Post, select: count(p.id))
+      |> Repo.one
+
+    next = next_page(count, 1)
+    render(conn, "index.html", posts: posts, page: 1, previous: nil, next: next)
   end
 
   def index(conn, %{"page" => page}) do
