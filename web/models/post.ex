@@ -4,13 +4,12 @@ defmodule Blog.Post do
   schema "posts" do
     field :title, :string
     field :body, :string
-    field :category, :string
     field :formatted_body, :string
 
     timestamps
   end
 
-  @required_fields ~w(title body category)
+  @required_fields ~w(title body)
   @optional_fields ~w(formatted_body)
 
   @doc """

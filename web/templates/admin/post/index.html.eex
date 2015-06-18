@@ -15,7 +15,6 @@
     <tr>
       <td><%= post.title %></td>
       <td><%= post.body %></td>
-      <td><%= post.category %></td>
 
       <td class="text-right">
         <%= link "Show", to: admin_post_path(@conn, :show, post), class: "btn btn-default btn-xs" %>
